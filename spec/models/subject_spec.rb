@@ -11,6 +11,11 @@ RSpec.describe Subject, type: :model do
       expect(@subject.name).to eq("Matemática")
     end
 
+    it "detail consegue ser preenchido?" do
+      @subject.detail = ""
+      expect(@subject.detail).to eq("funções do primeiro grau")
+    end
+
   end
 
 end
