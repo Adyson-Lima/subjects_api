@@ -26,6 +26,11 @@ RSpec.describe Subject, type: :model do
       expect(@subject).to be_valid
     end
 
+    it "Subject invalido com campos obrigatorios não preenchidos?" do
+      subject = Subject.new
+      expect(subject).to be_valid
+    end
+
   end
 
 end
