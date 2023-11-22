@@ -1,6 +1,6 @@
 class Api::V1::SubjectsController < ApplicationController
 
-  before_action :set_subject, only: %i[show] #show update delete
+  before_action :set_subject, only: %i[show update] #show update delete
 
   def index
     @subjects = Subject.all
@@ -15,6 +15,14 @@ class Api::V1::SubjectsController < ApplicationController
     @subject = Subject.new(subject_params)
     if @subject.save
       render json: @subject, status: :created, location: api_v1_subject_url(@subject)
+    else
+      render json: @subject.errors, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @subject.update(subject_params)
+      render json: @subject
     else
       render json: @subject.errors, status: :unprocessable_entity
     end
