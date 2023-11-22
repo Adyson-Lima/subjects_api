@@ -18,4 +18,14 @@ RSpec.describe Subject, type: :model do
 
   end
 
+  describe "Teste de validação do model Subject" do
+
+    it "Subject valido com campos obrigatorios preenchidos?" do
+      @subject.name = ""
+      @subject.detail = ""
+      expect(@subject).to be_valid
+    end
+
+  end
+
 end
