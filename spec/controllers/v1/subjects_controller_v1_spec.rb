@@ -20,4 +20,12 @@ RSpec.describe Api::V1::SubjectsController, type: :controller do
     end
   end
 
+  describe "POST /api/v1/subjects" do
+    it "Consegue criar um subject e retornar status 201?" do
+      post :create, params: {subject: {name: "biologia", detail: "citologia"}, format: :json}
+      expect(response.body).to include_json(detail: "citologia")
+      expect(response).to have_http_status(201)
+    end
+  end
+
 end
