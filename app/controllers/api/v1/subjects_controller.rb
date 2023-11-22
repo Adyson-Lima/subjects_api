@@ -1,6 +1,6 @@
 class Api::V1::SubjectsController < ApplicationController
 
-  before_action :set_subject, only: %i[show update] #show update delete
+  before_action :set_subject, only: %i[show update destroy] #show update destroy
 
   def index
     @subjects = Subject.all
@@ -26,6 +26,10 @@ class Api::V1::SubjectsController < ApplicationController
     else
       render json: @subject.errors, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @subject.destroy!
   end
 
 private
