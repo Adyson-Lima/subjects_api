@@ -28,4 +28,13 @@ RSpec.describe Api::V1::SubjectsController, type: :controller do
     end
   end
 
+  describe "PATCH /api/v1/subjects/id" do
+    it "Consegue atualizar um subject e retornar status 200?" do
+      subject = Subject.last
+      patch :update, params: {subject: {name: "quimica", detail: "atomistica"}, id: subject.id}
+      expect(response.body).to include_json(detail: "atomistica")
+      expect(response).to have_http_status(200)
+    end
+  end
+
 end
