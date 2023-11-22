@@ -7,7 +7,7 @@ RSpec.describe Subject, type: :model do
   describe "Teste de preenchimento do model Subject" do
 
     it "name consegue ser preenchido?" do
-      @subject = Subject.name = ""
+      @subject.name = "Matemática"
       expect(@subject.name).to eq("Matemática")
     end
 
