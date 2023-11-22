@@ -37,4 +37,13 @@ RSpec.describe Api::V1::SubjectsController, type: :controller do
     end
   end
 
+  describe "DELETE /api/v1/subjects/id" do
+    it "Consegue excluir um subject e retornar status 204?" do
+      subject = Subject.last
+      delete :destroy, params: {id: subject.id}
+      expect(Subject.all).not_to include(subject)
+      expect(response).to have_http_status(204)
+    end
+  end
+
 end
