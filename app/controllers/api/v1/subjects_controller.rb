@@ -1,10 +1,14 @@
 class Api::V1::SubjectsController < ApplicationController
 
-  #before_action :set_subject, only: %i[] #show update delete
+  before_action :set_subject, only: %i[show] #show update delete
 
   def index
     @subjects = Subject.all
     render json: @subjects
+  end
+
+  def show
+    render json: @subject
   end
 
 private
